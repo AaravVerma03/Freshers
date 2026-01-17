@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshers Invitation | Senior Mam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fef9ff;
+            color: #5a4a72;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+        
+        .header h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 2.8rem;
+            color: #7c5a9b;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header h1:after {
+            content: '🦋';
+            position: absolute;
+            right: -40px;
+            top: 0;
+            font-size: 1.8rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .header h1:before {
+            content: '🦋';
+            position: absolute;
+            left: -40px;
+            top: 0;
+            font-size: 1.8rem;
+            animation: float 3s ease-in-out infinite 1.5s;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #a76bc4;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(124, 90, 155, 0.1);
+            margin: 20px 0;
+            border: 2px solid #e8d4ff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Senior Section */
+        .senior-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .senior-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #a76bc4, #7c5a9b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(167, 107, 196, 0.2);
+        }
+        
+        .senior-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .senior-name {
+            font-size: 2.2rem;
+            color: #7c5a9b;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        
+        .senior-title {
+            color: #a76bc4;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Message */
+        .message {
+            background: #f8f4ff;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-left: 4px solid #a76bc4;
+        }
+        
+        .message p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        /* Event Grid */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .event-card {
+            background: #f9f5ff;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid #e8d4ff;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(167, 107, 196, 0.1);
+        }
+        
+        .event-card i {
+            font-size: 2.2rem;
+            color: #a76bc4;
+            margin-bottom: 15px;
+        }
+        
+        .event-card h3 {
+            color: #7c5a9b;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .event-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* RSVP Button */
+        .rsvp-section {
+            text-align: center;
+            margin: 50px 0 30px;
+        }
+        
+        .rsvp-btn {
+            background: linear-gradient(135deg, #a76bc4, #7c5a9b);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(167, 107, 196, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .rsvp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(167, 107, 196, 0.4);
+        }
+        
+        /* Response */
+        .response {
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .response.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Butterflies */
+        .butterfly {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: butterflyFly 15s linear infinite;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d4ff;
+            color: #7c5a9b;
+            font-size: 0.95rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes butterflyFly {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100vw, -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header h1:before,
+            .header h1:after {
+                display: none;
+            }
+            
+            .card {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            .event-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .senior-name {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Freshers Invitation</h1>
+            <p class="tagline">Join us for a memorable beginning at our college</p>
+        </div>
+        
+        <div class="card">
+            <div class="senior-section">
+                <!-- <div class="senior-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div> -->
+                <h2 class="senior-name">Respected Mam</h2>
+                <!-- <p class="senior-title">Your Guidance • Our Inspiration</p> -->
+            </div>
+            
+            <div class="message">
+                <p>Dear Mam,</p>
+                <p>Our freshers event is coming up, and it would be an honor if you’d join me for the ramp walk. It would really mean a lot to me.</p>
+                <p>It would be an amazing experience for me.</p>
+                <p>I’ll be eagerly waiting for your kind response.</p>
+            </div>
+            
+            <div class="event-grid">
+                <div class="event-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Date & Day</h3>
+                    <p>Monady, 26th Jan 2026</p>
+                </div>
+                
+                <div class="event-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time</h3>
+                    <p>9:00 AM- 6:00 PM</p>
+                </div>
+                
+                <div class="event-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Venue</h3>
+                    <p>Somewhere I don't know</p>
+                </div>
+            </div>
+            
+            <div class="rsvp-section">
+                <button class="rsvp-btn" id="rsvpBtn">
+                    <i class="fas fa-butterfly"></i>
+                    YES?
+                    <i class="fas fa-check"></i>
+                </button>
+            </div>
+            
+            <div class="response" id="response">
+                <div style="font-size: 1.5rem; color: #a76bc4; margin-bottom: 15px;">
+                    🦋✨YAYYYYYYYYYYYYYYYYYYYYYY✨🦋
+                </div>
+                <p style="color: #7c5a9b; font-weight: 500;">
+                    <!-- Your response has been recorded. Looking forward to seeing you there! -->
+                </p>
+                <p style="margin-top: 10px; color: #666; font-size: 0.95rem;">
+                    <!-- Formal invitation card will be provided separately. -->
+                </p>
+            </div>
+        </div>
+        
+        <!-- <div class="footer">
+            <p><i class="fas fa-university"></i> Department of [Your Department]</p>
+            <p style="margin-top: 10px;">[Your College Name] • Freshers Committee 2024</p>
+        </div> -->
+    </div>
+
+    <script>
+        // Create floating butterflies
+        function createButterflies() {
+            const butterflies = ['🦋', '🌸', '✨'];
+            
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const butterfly = document.createElement('div');
+                    butterfly.className = 'butterfly';
+                    butterfly.innerHTML = butterflies[Math.floor(Math.random() * butterflies.length)];
+                    butterfly.style.left = `-50px`;
+                    butterfly.style.top = `${Math.random() * 100}vh`;
+                    butterfly.style.fontSize = `${20 + Math.random() * 25}px`;
+                    butterfly.style.animationDuration = `${15 + Math.random() * 20}s`;
+                    butterfly.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    document.body.appendChild(butterfly);
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        butterfly.remove();
+                    }, 35000);
+                }, i * 2000);
+            }
+            
+            // Keep creating butterflies
+            setInterval(() => {
+                createButterflies();
+            }, 30000);
+        }
+        
+        // RSVP Button Click
+        document.getElementById('rsvpBtn').addEventListener('click', function() {
+            // Change button
+            this.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                Confirmed! Thank You
+                <i class="fas fa-check-circle"></i>
+            `;
+            this.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+            this.disabled = true;
+            
+            // Show response
+            document.getElementById('response').classList.add('show');
+            
+            // Create celebration butterflies
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const butterfly = document.createElement('div');
+                    butterfly.innerHTML = '🦋';
+                    butterfly.style.position = 'fixed';
+                    butterfly.style.left = `${Math.random() * 100}vw`;
+                    butterfly.style.top = '100vh';
+                    butterfly.style.fontSize = `${25 + Math.random() * 35}px`;
+                    butterfly.style.opacity = '0.8';
+                    butterfly.style.zIndex = '1000';
+                    butterfly.style.animation = `butterflyFly ${2 + Math.random() * 3}s linear forwards`;
+                    
+                    document.body.appendChild(butterfly);
+                    
+                    setTimeout(() => butterfly.remove(), 5000);
+                }, i * 100);
+            }
+            
+            // Confirmation sound
+            playConfirmationSound();
+        });
+        
+        // Confirmation sound
+        function playConfirmationSound() {
+            // Simple beep sound simulation
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 523.25; // C5
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+        
+        // Initialize
+        window.addEventListener('load', function() {
+            // Create initial butterflies
+            createButterflies();
+            
+            // Add fade-in animation to card
+            const card = document.querySelector('.card');
+            card.style.animation = 'fadeInUp 0.8s ease forwards';
+            
+            // Add current time and date
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+            
+            // Update greeting based on time
+            const hour = now.getHours();
+            let greeting = "Good ";
+            if (hour < 12) greeting = "Good Morning ";
+            else if (hour < 17) greeting = "Good Afternoon ";
+            else greeting = "Good Evening ";
+            
+            const tagline = document.querySelector('.tagline');
+            tagline.textContent = greeting + "Senior Mam! We cordially invite you to our Freshers' Day.";
+        });
+        
+        // Simple mouse follower effect for butterflies
+        document.addEventListener('mousemove', (e) => {
+            const butterflies = document.querySelectorAll('.butterfly');
+            butterflies.forEach(butterfly => {
+                const rect = butterfly.getBoundingClientRect();
+                const distance = Math.sqrt(
+                    Math.pow(e.clientX - (rect.left + rect.width/2), 2) +
+                    Math.pow(e.clientY - (rect.top + rect.height/2), 2)
+                );
+                
+                if (distance < 100) {
+                    const dx = (e.clientX - (rect.left + rect.width/2)) * 0.05;
+                    const dy = (e.clientY - (rect.top + rect.height/2)) * 0.05;
+                    
+                    butterfly.style.transform += ` translate(${dx}px, ${dy}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
