@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freshers Invitation | Senior Mam</title>
+    <title>Freshers Invitation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
     <style>
@@ -104,24 +104,28 @@
         
         .senior-name {
             font-size: 2.2rem;
-            color: #7c5a9b;
+            color: #ec6d7a;
             margin: 10px 0;
             font-weight: 600;
         }
         
         .senior-title {
-            color: #a76bc4;
+            color: #e374bc;
             font-size: 1.1rem;
             margin-bottom: 30px;
         }
         
         /* Message */
         .message {
-            background: #f8f4ff;
+            background: #ffc2e5;
             padding: 30px;
             border-radius: 20px;
             margin: 30px 0;
-            border-left: 4px solid #a76bc4;
+            border-left: 4px solid #a245d1;
+
+            display: flex;
+            align-items: center;  
+            gap: 20px;
         }
         
         .message p {
@@ -303,22 +307,23 @@
                 <!-- <div class="senior-icon">
                     <i class="fas fa-user-graduate"></i>
                 </div> -->
-                <h2 class="senior-name">Respected Mam</h2>
+                <h2 class="senior-name">Respected Anjli Mam</h2>
                 <!-- <p class="senior-title">Your Guidance • Our Inspiration</p> -->
             </div>
             
-            <div class="message">
-                <p>Dear Mam,</p>
-                <p>Our freshers event is coming up, and it would be an honor if you’d join me for the ramp walk. It would really mean a lot to me.</p>
-                <p>It would be an amazing experience for me.</p>
-                <p>I’ll be eagerly waiting for your kind response.</p>
+            <div class="message" type="inline">
+                <img src="anjlimam.jpeg" height="300px" alt="Image">
+                <p>Dear Mam,<br>
+                Our freshers event is coming up, and it would be an honor if you’d join me for the ramp walk. This will really mean a lot to me.<br>
+                It would be an amazing experience for me.<br>
+                I’ll be eagerly waiting for your kind response.</p>
             </div>
             
             <div class="event-grid">
                 <div class="event-card">
                     <i class="fas fa-calendar-alt"></i>
                     <h3>Date & Day</h3>
-                    <p>Monady, 26th Jan 2026</p>
+                    <p>Monday, 26th Jan 2026</p>
                 </div>
                 
                 <div class="event-card">
@@ -330,7 +335,7 @@
                 <div class="event-card">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Venue</h3>
-                    <p>Somewhere I don't know</p>
+                    <p>Fresher's Party</p>
                 </div>
             </div>
             
@@ -475,7 +480,7 @@
             else greeting = "Good Evening ";
             
             const tagline = document.querySelector('.tagline');
-            tagline.textContent = greeting + "Senior Mam! We cordially invite you to our Freshers' Day.";
+            tagline.textContent = greeting;
         });
         
         // Simple mouse follower effect for butterflies
